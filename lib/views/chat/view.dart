@@ -22,24 +22,34 @@ class ChatView extends StatelessWidget {
         child: AppBar(
           leading: Padding(
             padding: const EdgeInsets.only(left: 10),
-            child: CircleAvatar(
-              backgroundColor: AppColors.lightGrey,
-              child: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: CircleAvatar(
+                backgroundColor: AppColors.lightGrey,
+                child: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+              ),
             ),
           ),
           title: const AppbarButton(),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 10),
-              child: CircleAvatar(
-                backgroundColor: AppColors.lightGrey,
-                child: const Icon(Icons.more_horiz_rounded, size: 30),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: CircleAvatar(
+                  backgroundColor: AppColors.lightGrey,
+                  child: const Icon(Icons.more_horiz_rounded, size: 30),
+                ),
               ),
             ),
           ],
         ),
       ),
-      body: const SingleChildScrollView(child: ChatBodyWidget()),
+      body: const ChatBodyWidget(),
       floatingActionButton: const ChatBottomBar(),
     );
   }
@@ -52,29 +62,33 @@ class ChatBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      decoration: BoxDecoration(
-        color: AppColors.lightGrey,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
+    return SingleChildScrollView(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.only(bottom: 15),
+        decoration: BoxDecoration(
+          color: AppColors.lightGrey,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
         ),
-      ),
-      child: const Column(
-        children: [
-          DayWidget(day: 'Today'),
-          ChatQuestionWidget(
-              question:
-                  'Provide statistics on the development of the indonasian population'),
-          ChatAnswerWidget(
-            answer: AppText(
-                text:
-                    "Well, here is the latest statistical data on the indonasia's population"),
-            extraWidget: ChatAnswerStatisticWidget(),
-            timeTag: 'Just now',
-          )
-        ],
+        child: const Column(
+          children: [
+            DayWidget(day: 'Today'),
+            ChatQuestionWidget(
+                question:
+                    'Provide statistics on the development of the indonasian population'),
+            ChatAnswerWidget(
+              answer: AppText(
+                  text:
+                      "Well, here is the latest statistical data on the indonasia's population"),
+              extraWidget: ChatAnswerStatisticWidget(),
+              timeTag: 'Just now',
+            ),
+            SizedBox(height: 80)
+          ],
+        ),
       ),
     );
   }
@@ -198,7 +212,7 @@ class ChatAnswerStatisticWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 3, top: 3),
       padding: const EdgeInsets.all(15),
-      constraints: const BoxConstraints(maxWidth: 280),
+      constraints: const BoxConstraints(maxWidth: 270),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
@@ -309,21 +323,14 @@ class _ChatBottomBarState extends State<ChatBottomBar> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: _options.map((Icon option) {
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  _isDropdownOpen = false;
-                                });
-                              },
-                              child: Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.2),
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                  child: option),
-                            );
+                            return Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.2),
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: option);
                           }).toList(),
                         ),
                       ),

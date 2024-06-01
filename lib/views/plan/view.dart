@@ -1,10 +1,10 @@
 // All Flutter Built-in Imports Here.
-import 'package:cooperai/views/wavy_design.dart';
 import 'package:flutter/material.dart';
 
 // All Custom Imports Here.
 
 // All Native Imports Here.
+import 'package:cooperai/views/wavy_design.dart';
 import 'package:cooperai/constants/assets.dart';
 import 'package:cooperai/constants/colors.dart';
 import 'package:cooperai/constants/texts.dart';
@@ -17,31 +17,49 @@ class PlanView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: CircleAvatar(
-            backgroundColor: AppColors.lightGrey,
-            child: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          ),
-        ),
-      ),
-      body: const PlanBodyWidget(),
-      floatingActionButton: Container(
-        margin: const EdgeInsets.only(left: 40),
-        width: double.infinity,
-        child: FilledButton(
-          onPressed: () {},
-          style: FilledButton.styleFrom(backgroundColor: Colors.black),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
-            child: AppText(
-              text: 'Subscription',
-              color: Colors.white,
-              textSize: 17,
+      body: Stack(
+        children: [
+          Scaffold(
+            body: const PlanBodyWidget(),
+            floatingActionButton: Container(
+              margin: const EdgeInsets.only(left: 40),
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: () {},
+                style: FilledButton.styleFrom(backgroundColor: Colors.black),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                  child: AppText(
+                    text: 'Subscription',
+                    color: Colors.white,
+                    textSize: 17,
+                  ),
+                ),
+              ),
             ),
           ),
-        ),
+          Positioned(
+              top: -40,
+              left: 0,
+              right: 0,
+              child: WavyContainer(height: 250, color: AppColors.purpleDark)),
+          Positioned(
+            top: 30,
+            left: 20,
+            child: GestureDetector(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: CircleAvatar(
+                  backgroundColor: AppColors.lightGrey,
+                  child: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -54,12 +72,11 @@ class PlanBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        margin: const EdgeInsets.all(20),
+        margin: const EdgeInsets.symmetric(horizontal: 15, ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 40),
-            WavyContainer(height: 300, color: AppColors.purpleDark),
+            const SizedBox(height: 170),
             iconHeaderWidget(),
             const SizedBox(
               height: 30,
@@ -73,7 +90,8 @@ class PlanBodyWidget extends StatelessWidget {
                 planTitle: 'Yearly Plan',
                 planPrice: '\$8.99/per month',
                 bgColor: AppColors.yellow,
-                bgDarkColor: Colors.yellowAccent)
+                bgDarkColor: Colors.yellowAccent),
+            const SizedBox(height: 70)
           ],
         ),
       ),
@@ -120,7 +138,7 @@ class PlanBodyWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 10),
           child: AppText(
             text: 'Cooper+ plans',
-            textSize: 27,
+            textSize: 25,
             bold: true,
           ),
         ),
@@ -183,7 +201,7 @@ class PlanWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child:
-                            AppText(text: planTitle, textSize: 17, bold: true),
+                            AppText(text: planTitle, textSize: 15, bold: true),
                       ),
                       AppText(text: planPrice, color: Colors.black54),
                     ],

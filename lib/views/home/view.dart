@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // All Native Imports Here.
+import 'package:cooperai/views/wavy_design.dart';
 import 'package:cooperai/views/chat/view.dart';
 import 'package:cooperai/views/plan/view.dart';
 import 'package:cooperai/constants/assets.dart';
@@ -19,18 +20,34 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const AppbarButton(),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 20.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('assets/images/srk.jpg'),
-            ),
-          )
+      body: Stack(
+        children: [
+          Scaffold(
+            appBar: AppBar(),
+            body: const HomeBodyWidget(),
+          ),
+          Positioned(
+              top: -105,
+              left: 0,
+              child: WavyContainer(height: 250, color: AppColors.purpleDark)),
+          const Positioned(
+              top: 40,
+              left: 0,
+              right: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppbarButton(),
+                  Padding(
+                    padding: EdgeInsets.only(right: 20.0),
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/srk.jpg'),
+                    ),
+                  )
+                ],
+              )),
         ],
       ),
-      body: const HomeBodyWidget(),
     );
   }
 }
@@ -321,8 +338,13 @@ class SearchQuestionWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [getIconWithColor(), AppText(text: question)],
+          Flexible(
+            child: Row(
+              children: [
+                getIconWithColor(),
+                Flexible(child: AppText(text: question))
+              ],
+            ),
           ),
           const Padding(
             padding: EdgeInsets.only(right: 8),
