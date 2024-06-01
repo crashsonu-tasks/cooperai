@@ -1,5 +1,6 @@
 // All Flutter Built-in Imports Here.
 import 'package:cooperai/views/chat/view.dart';
+import 'package:cooperai/views/plan/view.dart';
 import 'package:flutter/material.dart';
 
 // All Custom Imports Here.
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ChatView(),
+      home: const PlanView(),
     );
   }
 }
