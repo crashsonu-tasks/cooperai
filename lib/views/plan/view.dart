@@ -1,4 +1,5 @@
 // All Flutter Built-in Imports Here.
+import 'package:cooperai/views/wavy_design.dart';
 import 'package:flutter/material.dart';
 
 // All Custom Imports Here.
@@ -58,6 +59,7 @@ class PlanBodyWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 40),
+            WavyContainer(height: 300, color: AppColors.purpleDark),
             iconHeaderWidget(),
             const SizedBox(
               height: 30,

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // All Native Imports Here.
+import 'package:cooperai/views/chat/view.dart';
+import 'package:cooperai/views/plan/view.dart';
 import 'package:cooperai/constants/assets.dart';
 import 'package:cooperai/constants/colors.dart';
 import 'package:cooperai/constants/texts.dart';
@@ -45,7 +47,7 @@ class HomeBodyWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             headerTextSection(),
-            headerBoxesSection(),
+            headerBoxesSection(context),
             recentSearchSection()
           ],
         ),
@@ -69,7 +71,7 @@ class HomeBodyWidget extends StatelessWidget {
     );
   }
 
-  Widget headerBoxesSection() {
+  Widget headerBoxesSection(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: IntrinsicHeight(
@@ -107,13 +109,21 @@ class HomeBodyWidget extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.only(top: 7),
-                      child: HomeHeaderBox(
-                        title: 'New chat',
-                        icon: Icons.chat_outlined,
-                        bgColor: AppColors.yellow,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ChatView()));
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.only(top: 7),
+                        child: HomeHeaderBox(
+                          title: 'New chat',
+                          icon: Icons.chat_outlined,
+                          bgColor: AppColors.yellow,
+                        ),
                       ),
                     ),
                     Positioned(
@@ -137,12 +147,20 @@ class HomeBodyWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                const HomeHeaderBox(
-                  title: 'Search by image',
-                  icon: Icons.document_scanner_outlined,
-                  bgColor: Colors.black,
-                  isDarkBgColor: true,
-                  iconBgOpacity: 0.2,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PlanView()));
+                  },
+                  child: const HomeHeaderBox(
+                    title: 'Search by image',
+                    icon: Icons.document_scanner_outlined,
+                    bgColor: Colors.black,
+                    isDarkBgColor: true,
+                    iconBgOpacity: 0.2,
+                  ),
                 )
               ],
             ))
