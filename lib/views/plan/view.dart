@@ -21,8 +21,8 @@ class PlanView extends StatelessWidget {
         children: [
           Scaffold(
             body: const PlanBodyWidget(),
-            floatingActionButton: Container(
-              margin: const EdgeInsets.only(left: 40),
+            bottomNavigationBar: Container(
+              margin: const EdgeInsets.all(15),
               width: double.infinity,
               child: FilledButton(
                 onPressed: () {},

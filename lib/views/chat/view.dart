@@ -50,7 +50,7 @@ class ChatView extends StatelessWidget {
         ),
       ),
       body: const ChatBodyWidget(),
-      floatingActionButton: const ChatBottomBar(),
+      bottomNavigationBar: const ChatBottomBar(),
     );
   }
 
@@ -274,7 +274,7 @@ class _ChatBottomBarState extends State<ChatBottomBar> {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      margin: const EdgeInsets.only(left: 30.0, top: 15),
+      margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(40)),
       child: Row(
