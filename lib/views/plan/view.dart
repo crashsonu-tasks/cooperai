@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // All Custom Imports Here.
 
 // All Native Imports Here.
-import 'package:cooperai/views/wavy_design.dart';
+import 'package:cooperai/views/widgets/wavy_design.dart';
 import 'package:cooperai/constants/assets.dart';
 import 'package:cooperai/constants/colors.dart';
 import 'package:cooperai/constants/texts.dart';

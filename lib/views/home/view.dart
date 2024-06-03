@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // All Native Imports Here.
-import 'package:cooperai/views/wavy_design.dart';
+import 'package:cooperai/views/widgets/wavy_design.dart';
 import 'package:cooperai/views/chat/view.dart';
 import 'package:cooperai/views/plan/view.dart';
 import 'package:cooperai/constants/assets.dart';
